@@ -1,0 +1,29 @@
+{
+  "name": "shopy",
+  "version": "1.0.0",
+  "description": "A shop app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:server": "babel ./server/src -d ./server/dist",
+    "start:devserver": "node ./server/dist/app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/successgilli/shopy.git"
+  },
+  "author": "A.N Gilbert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/successgilli/shopy/issues"
+  },
+  "homepage": "https://github.com/successgilli/shopy#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3"
+  }
+}
