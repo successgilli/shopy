@@ -1,7 +1,14 @@
 import express from 'express'
 
+import productsController from '../controllers/products';
+import productsValidator from '../validators/products';
+import imageupload from '../config/imageUpload';
+
+const { createProducts } = productsController;
+const { validateCreateProducts } = productsValidator;
+
 const route = express.Router();
 
-route.post('/', (request, response) => response.send('get products'));
+route.post('/', imageupload.single('image'), validateCreateProducts, createProducts);
 
 export default route

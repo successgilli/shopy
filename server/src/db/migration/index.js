@@ -8,11 +8,11 @@ const User = `create table if not exists Users (
 
 const Products = `create table if not exists Products(
     id uuid DEFAULT uuid_generate_v4 (),
-    name text not null,
+    name text not null unique,
 	description varchar(250) not null,
 	price float not null,
 	category varchar(250) not null,
-	image varchar(250) not null,
+	image varchar(250),
 	color varchar(250) not null
     );
 `
