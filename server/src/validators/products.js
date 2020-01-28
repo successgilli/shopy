@@ -12,10 +12,10 @@ const improperVals = (request) => {
     if ('name' in request && (!/^[a-zA-Z ]{5,}$/.test(name.trim()))) {
         errors.name = 'Invalid product name';
     }
-    if ('description' in request && (!/^[a-zA-Z ]{5,}$/.test(description.trim()))) {
+    if ('description' in request && (!/^[a-zA-Z .']{5,}$/.test(description.trim()))) {
         errors.description = 'description too short (<5) or contains invalid character';
     }
-    if ('category' in request && (!/^[a-zA-Z]{5,}$/.test(category.trim()))) {
+    if ('category' in request && (!/^[a-zA-Z .']{5,}$/.test(category.trim()))) {
         errors.category = 'category too short (<5) or contains invalid character';
     }
     if ('color' in request && (!/^[a-zA-Z]{3,}$/.test(color.trim()))) {

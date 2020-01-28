@@ -1,5 +1,5 @@
 import '@babel/polyfill';
-import db from './index';
+import db from '../index';
 
 export default {
     insertProducts: async (product) => {
@@ -31,6 +31,15 @@ export default {
             const result = await db.query(text, param);
 
             return result;
+        } catch (error) {
+            return error.message;
+        }
+    },
+    getAllProducts: async () => {
+        try {
+            const text = 'SELECT id, name, price from products';
+
+            return await db.query(text);
         } catch (error) {
             return error.message;
         }
