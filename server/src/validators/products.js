@@ -61,5 +61,21 @@ export default {
             errors = {};
             next(error);
         }
+    },
+    validateRouteId: (request, response, next) => {
+        try {
+            const { params: { productId } } = request;
+            const uuidRegex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
+
+            if(!(uuidRegex.test(productId))) {
+                const error = new Error('Invalid product Id');
+                error.status = 400;
+                throw error;
+            }
+
+            next();
+        } catch (error) {
+            next(error)
+        }
     }
 }

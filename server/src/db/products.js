@@ -3,7 +3,7 @@ import db from './index';
 
 export default {
     insertProducts: async (product) => {
-        try{
+        try {
             const {
                 name,
                 description,
@@ -17,10 +17,21 @@ export default {
             const result = await db.query(text, params);
 
             return result;
-        } catch(error){
-            if(error.message === 'duplicate key value violates unique constraint "products_name_key"'){
+        } catch (error) {
+            if (error.message === 'duplicate key value violates unique constraint "products_name_key"') {
                 return 'product name already exist'
             }
+            return error.message;
+        }
+    },
+    getProduct: async (productId) => {
+        try {
+            const text = 'SELECT * FROM products where id = $1';
+            const param = [productId.trim()];
+            const result = await db.query(text, param);
+
+            return result;
+        } catch (error) {
             return error.message;
         }
     }
